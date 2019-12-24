@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingfeng.qingblog.dao.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.qingfeng.qingblog.model.Article">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="publishDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="editTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pageView" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="mdContent" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="htmlContent" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="summary" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qingfeng.qingblog.model.Article">
+    insert into article (id, title, cid, 
+      uid, publishDate, editTime, 
+      state, pageView, mdContent, 
+      htmlContent, summary)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, 
+      #{uid,jdbcType=INTEGER}, #{publishdate,jdbcType=TIMESTAMP}, #{edittime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{pageview,jdbcType=INTEGER}, #{mdcontent,jdbcType=LONGVARCHAR}, 
+      #{htmlcontent,jdbcType=LONGVARCHAR}, #{summary,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.qingfeng.qingblog.model.Article">
+    update article
+    set title = #{title,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      editTime = #{edittime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      pageView = #{pageview,jdbcType=INTEGER},
+      mdContent = #{mdcontent,jdbcType=LONGVARCHAR},
+      htmlContent = #{htmlcontent,jdbcType=LONGVARCHAR},
+      summary = #{summary,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, title, cid, uid, publishDate, editTime, state, pageView, mdContent, htmlContent, 
+    summary
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, cid, uid, publishDate, editTime, state, pageView, mdContent, htmlContent, 
+    summary
+    from article
+  </select>
+</mapper>

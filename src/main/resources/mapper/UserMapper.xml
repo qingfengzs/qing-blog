@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingfeng.qingblog.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.qingfeng.qingblog.model.User">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="nickname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="enabled" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="userface" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from q_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qingfeng.qingblog.model.User">
+    insert into q_user (id, username, nickname, 
+      password, enabled, email, 
+      userface, regTime)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, 
+      #{userface,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.qingfeng.qingblog.model.User">
+    update q_user
+    set username = #{username,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      userface = #{userface,jdbcType=VARCHAR},
+      regTime = #{regTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, nickname, password, enabled, email, userface, regTime
+    from q_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, nickname, password, enabled, email, userface, regTime
+    from q_user
+  </select>
+</mapper>
