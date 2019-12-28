@@ -1,16 +1,20 @@
 package com.qingfeng.qingblog.dao;
 
 import com.qingfeng.qingblog.model.Article;
-import java.util.List;
+import com.qingfeng.qingblog.model.ArticleWithBLOBs;
 
 public interface ArticleMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Article record);
+    int insert(ArticleWithBLOBs record);
 
-    Article selectByPrimaryKey(Integer id);
+    int insertSelective(ArticleWithBLOBs record);
 
-    List<Article> selectAll();
+    ArticleWithBLOBs selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(ArticleWithBLOBs record);
+
+    int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record);
 
     int updateByPrimaryKey(Article record);
 }

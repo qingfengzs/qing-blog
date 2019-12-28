@@ -3,43 +3,54 @@ package com.qingfeng.qingblog.model;
 import java.util.Date;
 
 public class Category {
-    private Integer id;
+    private Long categoryId;
 
-    private String catename;
+    private Date createTime;
 
-    private Date date;
+    private Date updateTime;
 
-    public Category(Integer id, String catename, Date date) {
-        this.id = id;
-        this.catename = catename;
-        this.date = date;
+    private Boolean isEffective;
+
+    public Category(Long categoryId, Date createTime, Date updateTime, Boolean isEffective) {
+        this.categoryId = categoryId;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.isEffective = isEffective;
     }
 
     public Category() {
         super();
     }
 
-    public Integer getId() {
-        return id;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getCatename() {
-        return catename;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCatename(String catename) {
-        this.catename = catename == null ? null : catename.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Boolean getIsEffective() {
+        return isEffective;
+    }
+
+    public void setIsEffective(Boolean isEffective) {
+        this.isEffective = isEffective;
     }
 }

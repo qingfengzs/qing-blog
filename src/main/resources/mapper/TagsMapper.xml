@@ -7,6 +7,15 @@
       <arg column="tagName" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List">
+    id, tagName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tags
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tags
     where id = #{id,jdbcType=INTEGER}
@@ -15,18 +24,37 @@
     insert into tags (id, tagName)
     values (#{id,jdbcType=INTEGER}, #{tagname,jdbcType=VARCHAR})
   </insert>
+  <insert id="insertSelective" parameterType="com.qingfeng.qingblog.model.Tags">
+    insert into tags
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tagname != null">
+        tagName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tagname != null">
+        #{tagname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingfeng.qingblog.model.Tags">
+    update tags
+    <set>
+      <if test="tagname != null">
+        tagName = #{tagname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.qingfeng.qingblog.model.Tags">
     update tags
     set tagName = #{tagname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, tagName
-    from tags
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, tagName
-    from tags
-  </select>
 </mapper>

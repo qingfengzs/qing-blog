@@ -15,6 +15,14 @@ public class Comments {
 
     private String content;
 
+    public Comments(Integer id, Integer aid, Date publishdate, Integer parentid, Integer uid) {
+        this.id = id;
+        this.aid = aid;
+        this.publishdate = publishdate;
+        this.parentid = parentid;
+        this.uid = uid;
+    }
+
     public Comments(Integer id, Integer aid, Date publishdate, Integer parentid, Integer uid, String content) {
         this.id = id;
         this.aid = aid;

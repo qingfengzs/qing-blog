@@ -13,6 +13,15 @@
       <arg column="regTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List">
+    id, username, nickname, password, enabled, email, userface, regTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from q_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from q_user
     where id = #{id,jdbcType=INTEGER}
@@ -25,6 +34,88 @@
       #{password,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, 
       #{userface,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP})
   </insert>
+  <insert id="insertSelective" parameterType="com.qingfeng.qingblog.model.User">
+    insert into q_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="userface != null">
+        userface,
+      </if>
+      <if test="regTime != null">
+        regTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userface != null">
+        #{userface,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingfeng.qingblog.model.User">
+    update q_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userface != null">
+        userface = #{userface,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        regTime = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.qingfeng.qingblog.model.User">
     update q_user
     set username = #{username,jdbcType=VARCHAR},
@@ -36,13 +127,4 @@
       regTime = #{regTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, username, nickname, password, enabled, email, userface, regTime
-    from q_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, nickname, password, enabled, email, userface, regTime
-    from q_user
-  </select>
 </mapper>

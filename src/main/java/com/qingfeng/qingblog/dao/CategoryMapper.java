@@ -1,16 +1,17 @@
 package com.qingfeng.qingblog.dao;
 
 import com.qingfeng.qingblog.model.Category;
-import java.util.List;
 
 public interface CategoryMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long categoryId);
 
     int insert(Category record);
 
-    Category selectByPrimaryKey(Integer id);
+    int insertSelective(Category record);
 
-    List<Category> selectAll();
+    Category selectByPrimaryKey(Long categoryId);
+
+    int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
 }

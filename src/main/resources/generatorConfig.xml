@@ -9,7 +9,7 @@
     <!--指定特定数据库的jdbc驱动jar包的位置 -->
     <classPathEntry location="${class_path}"/>
 
-    <context id="default" targetRuntime="MyBatis3Simple">
+    <context id="default" targetRuntime="MyBatis3">
 
 
         <!-- optional，旨在创建class时，对注释进行控制 -->
@@ -148,7 +148,19 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
 <!--            <columnOverride column="" javaType=""    jdbcType="" typeHandler=""  delimitedColumnName="" />-->
 
         </table>
+        <table tableName="article_category" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="article_picture" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
         <table tableName="article_tags" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="article_view" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
@@ -180,6 +192,9 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="true"/>
         </table>
-
+        <table tableName="sys_log" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
     </context>
 </generatorConfiguration>
