@@ -156,7 +156,7 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="article_tags" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="article_tags" schema="qing-blog" domainObjectName="ArticleTag" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
@@ -168,7 +168,7 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="comments" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="comments" schema="qing-blog" domainObjectName="Comment"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
@@ -176,7 +176,7 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="roles" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="roles" schema="qing-blog" domainObjectName="Role"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
@@ -184,7 +184,7 @@ database types (e.g. MySql's unsigned bigint type should be mapped to java.lang.
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="tags" schema="qing-blog"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="tags" schema="qing-blog" domainObjectName="Tag"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!--添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样-->
             <property name="useActualColumnNames" value="false"/>
         </table>
